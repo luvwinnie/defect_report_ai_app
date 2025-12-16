@@ -1,0 +1,31 @@
+# Maestro Configuration
+# Global configuration for E2E tests
+
+# Flow configuration
+flows:
+  - 01_login_flow.yaml
+  - 02_dashboard_flow.yaml
+  - 03_chat_flow.yaml
+  - 04_defect_input_flow.yaml
+  - 05_full_user_journey.yaml
+
+# Test execution settings
+executionOrder:
+  continueOnFailure: false
+  retries: 2
+
+# Environment variables for tests
+env:
+  TEST_USER: "admin"
+  TEST_PASSWORD: "admin123"
+  API_BASE_URL: "http://localhost:8000"
+
+# Screenshot settings
+screenshots:
+  enabled: true
+  onFailure: true
+
+# Timeouts
+defaults:
+  timeout: 10000
+  retryDelay: 1000

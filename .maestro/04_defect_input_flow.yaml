@@ -1,0 +1,78 @@
+# Defect Input Flow E2E Test
+# Tests the defect report input functionality
+
+appId: host.exp.Exponent
+---
+
+# Navigate to Input Screen
+- tapOn:
+    text: "入力"
+- assertVisible: "不良情報入力"
+- assertVisible: "新規不良レポート作成"
+
+# Test: Form Fields Present
+- assertVisible: "発生日時"
+- assertVisible: "機械"
+- assertVisible: "不良タイプ"
+- assertVisible: "重要度"
+- assertVisible: "説明"
+
+# Test: Severity Selection
+- scrollUntilVisible:
+    element:
+      text: "重要度"
+    direction: DOWN
+    timeout: 3000
+
+# Test: Select Low Severity
+- tapOn: "低"
+- waitForAnimationToEnd
+
+# Test: Select Medium Severity
+- tapOn: "中"
+- waitForAnimationToEnd
+
+# Test: Select High Severity
+- tapOn: "高"
+- waitForAnimationToEnd
+
+# Test: Select Critical Severity
+- tapOn: "重大"
+- waitForAnimationToEnd
+
+# Test: Input Description
+- scrollUntilVisible:
+    element:
+      text: "説明"
+    direction: DOWN
+    timeout: 3000
+- tapOn:
+    id: "description-input"
+- inputText: "テスト不良レポート - E2Eテスト用"
+
+# Test: Machine Dropdown
+- scroll:
+    direction: UP
+- tapOn:
+    text: "機械を選択"
+    optional: true
+
+# Test: Submit Button
+- scrollUntilVisible:
+    element:
+      text: "レポート送信"
+    direction: DOWN
+    timeout: 3000
+- assertVisible: "レポート送信"
+
+# Test: Form Validation (submit without all fields)
+- tapOn: "レポート送信"
+- waitForAnimationToEnd
+
+# Test: Cancel/Reset functionality
+- scrollUntilVisible:
+    element:
+      text: "リセット"
+    direction: DOWN
+    timeout: 3000
+    optional: true

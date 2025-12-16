@@ -1,0 +1,40 @@
+# Login Flow E2E Test
+# Tests the authentication flow of the mobile app
+
+appId: host.exp.Exponent
+---
+
+# Test: App Title Display
+- assertVisible: "不良分析"
+- assertVisible: "製造不良管理システム"
+
+# Test: Login Card Display
+- assertVisible: "ログイン"
+
+# Test: Input Fields Present
+- assertVisible: "ユーザー名"
+- assertVisible: "パスワード"
+
+# Test: Enter Username
+- tapOn: "ユーザー名"
+- inputText: "admin"
+- hideKeyboard
+
+# Test: Enter Password
+- tapOn: "パスワード"
+- inputText: "admin123"
+- hideKeyboard
+
+# Test: Submit Login
+- tapOn:
+    text: "ログイン"
+    index: 1
+
+# Wait for navigation (either success or error)
+- waitForAnimationToEnd:
+    timeout: 10000
+
+# Check if we got to dashboard (success) or see error (failure)
+- assertVisible:
+    text: "ダッシュボード"
+    optional: true

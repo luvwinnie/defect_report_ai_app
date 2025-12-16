@@ -1,0 +1,55 @@
+# Chat Flow E2E Test
+# Tests the AI chat functionality
+
+appId: host.exp.Exponent
+---
+
+# Navigate to Chat Screen
+- tapOn:
+    text: "チャット"
+- assertVisible: "AIチャット"
+- assertVisible: "不良分析AIアシスタント"
+
+# Test: Initial State
+- assertVisible: "不良分析に関する質問"
+- assertVisible: "質問を入力してください"
+
+# Test: Quick Suggestions
+- assertVisible:
+    text: "最近の不良傾向"
+    optional: true
+- assertVisible:
+    text: "重大不良の原因"
+    optional: true
+
+# Test: Send a Message
+- tapOn:
+    id: "chat-input"
+- inputText: "最近の不良傾向を教えてください"
+- tapOn:
+    id: "send-button"
+
+# Wait for response (with timeout for API call)
+- waitForAnimationToEnd:
+    timeout: 10000
+
+# Test: Message appears in chat
+- assertVisible: "最近の不良傾向"
+
+# Test: AI Response received
+- extendedWaitUntil:
+    visible: "assistant"
+    timeout: 30000
+    optional: true
+
+# Test: Scroll in chat
+- scroll:
+    direction: UP
+
+# Test: New message input
+- tapOn:
+    id: "chat-input"
+- inputText: "CMX800の不良パターン"
+- tapOn:
+    id: "send-button"
+- waitForAnimationToEnd

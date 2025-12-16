@@ -1,0 +1,110 @@
+# Full User Journey E2E Test
+# Complete end-to-end test covering all main user flows
+
+appId: host.exp.Exponent
+name: "Full User Journey Test"
+---
+
+# === PHASE 1: AUTHENTICATION ===
+
+# Wait for app to load
+- extendedWaitUntil:
+    visible: "ログイン"
+    timeout: 10000
+
+# Verify login screen
+- assertVisible: "不良分析"
+- assertVisible: "製造不良管理システム"
+
+# Login with correct credentials (admin / Admin@123!)
+- tapOn: "ユーザー名"
+- inputText: "admin"
+- hideKeyboard
+- tapOn: "パスワード"
+- inputText: "Admin@123!"
+- hideKeyboard
+- tapOn:
+    text: "ログイン"
+    index: 1
+
+# Wait for dashboard (longer timeout for API)
+- extendedWaitUntil:
+    visible: "ダッシュボード"
+    timeout: 20000
+
+# === PHASE 2: DASHBOARD EXPLORATION ===
+
+# Verify dashboard elements
+- assertVisible: "不良分析ダッシュボード"
+- assertVisible: "総不良件数"
+- assertVisible: "OEE指標"
+
+# Scroll down to see more
+- swipe:
+    direction: UP
+    duration: 500
+- waitForAnimationToEnd
+
+# Scroll back up
+- swipe:
+    direction: DOWN
+    duration: 500
+- waitForAnimationToEnd
+
+# Take screenshot of dashboard
+- takeScreenshot: dashboard_view
+
+# === PHASE 3: NAVIGATE TO CHAT ===
+
+- tapOn: "チャット"
+- waitForAnimationToEnd
+
+# Verify chat screen
+- assertVisible: "AIチャット"
+- assertVisible: "不良分析AIアシスタント"
+
+# Take screenshot of chat
+- takeScreenshot: chat_view
+
+# Test chat input
+- tapOn: "質問を入力してください"
+- inputText: "テスト質問です"
+- hideKeyboard
+
+# === PHASE 4: NAVIGATE TO DEFECT INPUT ===
+
+- tapOn: "入力"
+- waitForAnimationToEnd
+
+# Verify input screen
+- assertVisible: "不良情報入力"
+- assertVisible: "新規不良レポート作成"
+
+# Take screenshot of input form
+- takeScreenshot: input_view
+
+# Scroll to see severity selection
+- swipe:
+    direction: UP
+    duration: 500
+
+# Test severity selection
+- tapOn:
+    text: "中"
+    optional: true
+
+# Scroll back
+- swipe:
+    direction: DOWN
+    duration: 500
+
+# === PHASE 5: RETURN TO DASHBOARD ===
+
+- tapOn: "ダッシュボード"
+- waitForAnimationToEnd
+
+# Verify we're back on dashboard
+- assertVisible: "不良分析ダッシュボード"
+
+# === TEST COMPLETE ===
+- takeScreenshot: final_dashboard

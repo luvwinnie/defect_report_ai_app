@@ -1,0 +1,46 @@
+{
+  "name": "mobile",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "web": "expo start --web",
+    "test:e2e": "maestro test .maestro/",
+    "test:e2e:login": "maestro test .maestro/01_login_flow.yaml",
+    "test:e2e:dashboard": "maestro test .maestro/02_dashboard_flow.yaml",
+    "test:e2e:chat": "maestro test .maestro/03_chat_flow.yaml",
+    "test:e2e:input": "maestro test .maestro/04_defect_input_flow.yaml",
+    "test:e2e:journey": "maestro test .maestro/05_full_user_journey.yaml",
+    "test:e2e:studio": "maestro studio"
+  },
+  "dependencies": {
+    "@expo/vector-icons": "^15.0.3",
+    "@react-native-async-storage/async-storage": "^2.2.0",
+    "@react-native-community/datetimepicker": "8.4.4",
+    "@react-navigation/bottom-tabs": "^7.8.12",
+    "@react-navigation/native": "^7.1.25",
+    "@react-navigation/native-stack": "^7.8.6",
+    "axios": "^1.13.2",
+    "expo": "~54.0.29",
+    "expo-image-picker": "~17.0.10",
+    "expo-secure-store": "^15.0.8",
+    "expo-status-bar": "~3.0.9",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-native": "0.81.5",
+    "react-native-chart-kit": "^6.12.0",
+    "react-native-gesture-handler": "~2.28.0",
+    "react-native-paper": "^5.14.5",
+    "react-native-safe-area-context": "^5.6.2",
+    "react-native-screens": "~4.16.0",
+    "react-native-svg": "^15.15.1",
+    "react-native-web": "^0.21.0"
+  },
+  "devDependencies": {
+    "@types/react": "~19.1.0",
+    "typescript": "~5.9.2"
+  },
+  "private": true
+}

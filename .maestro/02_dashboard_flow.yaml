@@ -1,0 +1,53 @@
+# Dashboard Flow E2E Test
+# Tests the main dashboard functionality after login
+
+appId: host.exp.Exponent
+---
+
+# Prerequisite: User should be logged in
+# This test assumes login has been performed
+
+# Test: Dashboard Screen Elements
+- assertVisible: "ダッシュボード"
+- assertVisible: "不良分析ダッシュボード"
+
+# Test: Stats Cards Display
+- assertVisible: "総不良件数"
+- assertVisible: "重大不良"
+- assertVisible: "未解決"
+- assertVisible: "今月件数"
+
+# Test: OEE Gauge Display
+- assertVisible: "OEE指標"
+- assertVisible: "可動率"
+- assertVisible: "性能"
+- assertVisible: "品質"
+
+# Test: Recent Defects Section
+- assertVisible: "最近の不良レポート"
+- scrollUntilVisible:
+    element:
+      text: "すべて表示"
+    direction: DOWN
+    timeout: 5000
+
+# Test: Bottom Tab Navigation - Navigate to Chat
+- tapOn:
+    text: "チャット"
+- assertVisible: "AIチャット"
+
+# Test: Bottom Tab Navigation - Navigate to Input
+- tapOn:
+    text: "入力"
+- assertVisible: "不良情報入力"
+
+# Test: Bottom Tab Navigation - Return to Dashboard
+- tapOn:
+    text: "ダッシュボード"
+- assertVisible: "不良分析ダッシュボード"
+
+# Test: Pull to Refresh
+- swipe:
+    direction: DOWN
+    duration: 500
+- waitForAnimationToEnd
