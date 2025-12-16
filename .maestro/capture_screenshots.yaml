@@ -1,0 +1,47 @@
+appId: com.defectreport.mobile
+---
+# Screenshot capture flow for README documentation
+
+# 1. Start at login screen (logout if needed)
+- runFlow:
+    when:
+      visible: "ログアウト"
+    file: flows/logout.yaml
+
+# Take Login screenshot
+- takeScreenshot: screenshots/01_login
+
+# 2. Login
+- tapOn: "ユーザー名"
+- inputText: "testuser"
+- tapOn: "パスワード"
+- inputText: "TestPassword123!"
+- tapOn: "ログイン"
+- assertVisible: "ダッシュボード"
+- waitForAnimationToEnd
+
+# Take Dashboard screenshot
+- takeScreenshot: screenshots/02_dashboard
+
+# 3. Navigate to AI Chat
+- tapOn: "AIチャット"
+- assertVisible: "AIアシスタント"
+- waitForAnimationToEnd
+
+# Take AI Chat screenshot
+- takeScreenshot: screenshots/03_ai_chat
+
+# 4. Navigate to Defect Input
+- tapOn: "不良入力"
+- assertVisible: "不良品レポート"
+- waitForAnimationToEnd
+
+# Take Defect Input screenshot
+- takeScreenshot: screenshots/04_defect_input
+
+# 5. Navigate to Profile
+- tapOn: "プロフィール"
+- waitForAnimationToEnd
+
+# Take Profile screenshot
+- takeScreenshot: screenshots/05_profile

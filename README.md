@@ -15,9 +15,10 @@
 
 ## スクリーンショット
 
-### モバイルアプリ - ダッシュボード
-
-![Mobile App Dashboard](docs/screenshots/mobile_app.png)
+| ダッシュボード | 不良入力 |
+|:-------------:|:-------:|
+| ![Dashboard](docs/screenshots/02_dashboard.png) | ![Defect Input](docs/screenshots/04_defect_input.png) |
+| KPIサマリー、不良件数推移グラフ | 不適合報告入力フォーム |
 
 ### Webアプリ - ダッシュボード
 
