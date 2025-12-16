@@ -13,6 +13,18 @@
 - **不良入力**: 手動での不良品レポート入力（画像添付対応）
 - **セッション永続化**: 一度ログインすれば、アプリを閉じても再ログイン不要
 
+## スクリーンショット
+
+### モバイルアプリ - ダッシュボード
+
+![Mobile App Dashboard](docs/screenshots/mobile_app.png)
+
+### Webアプリ - ダッシュボード
+
+Webアプリのダッシュボードは、より詳細なデータ可視化と分析機能を提供します。
+
+![Web App Dashboard](https://raw.githubusercontent.com/luvwinnie/defect_report_ai/main/docs/screenshots/dashboard_overview.png)
+
 ## 技術スタック
 
 | カテゴリ | 技術 |
